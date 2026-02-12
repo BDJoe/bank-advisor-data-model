@@ -2,16 +2,13 @@ package com.wellsfargo.counselor.entity;
 
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
-
 @Entity
 public class Security {
     @Id
     @GeneratedValue()
-    private Long securityId;
+    private long securityId;
 
     @ManyToOne
-    @JoinColumn(name = "porfolio_id", nullable = false)
     private Portfolio portfolio;
 
     @Column(nullable = false)
@@ -21,17 +18,17 @@ public class Security {
     private String category;
 
     @Column(nullable = false)
-    private Float purchasePrice;
+    private float purchasePrice;
 
     @Column(nullable = false)
-    private Timestamp purchaseDate;
+    private String purchaseDate;
 
     @Column(nullable = false)
-    private Long quantity;
+    private float quantity;
 
     protected Security() {}
 
-    public Security(Portfolio portfolio, String name, String category, Float purchasePrice, Timestamp purchaseDate, Long quantity) {
+    public Security(Portfolio portfolio, String name, String category, float purchasePrice, String purchaseDate, float quantity) {
         this.portfolio = portfolio;
         this.name = name;
         this.category = category;
@@ -40,6 +37,9 @@ public class Security {
         this.quantity = quantity;
     }
 
+    public long getSecurityId() {
+        return securityId;
+    }
 
     public Portfolio getPortfolio() {
         return portfolio;
@@ -65,27 +65,27 @@ public class Security {
         this.category = category;
     }
 
-    public Float getPurchasePrice() {
+    public float getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(Float purchasePrice) {
+    public void setPurchasePrice(float purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
-    public Timestamp getPurchaseDate() {
+    public String getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Timestamp purchaseDate) {
+    public void setPurchaseDate(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public Long getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 }

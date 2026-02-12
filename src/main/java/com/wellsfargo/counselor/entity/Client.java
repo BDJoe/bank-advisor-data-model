@@ -6,10 +6,9 @@ import jakarta.persistence.*;
 public class Client {
     @Id
     @GeneratedValue()
-    private String clientId;
+    private long clientId;
 
     @ManyToOne
-    @JoinColumn(name = "advisor_id", nullable = false)
     private Advisor advisor;
 
     @Column(nullable = false)
@@ -35,6 +34,18 @@ public class Client {
         this.email = email;
         this.Address = Address;
         this.phone = phone;
+        this.advisor = advisor;
+    }
+
+    public long getClientId() {
+        return clientId;
+    }
+
+    public Advisor getAdvisor() {
+        return advisor;
+    }
+
+    public void setAdvisor(Advisor advisor) {
         this.advisor = advisor;
     }
 
@@ -76,13 +87,5 @@ public class Client {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Advisor getAdvisor() {
-        return advisor;
-    }
-
-    public void setAdvisor(Advisor advisor) {
-        this.advisor = advisor;
     }
 }

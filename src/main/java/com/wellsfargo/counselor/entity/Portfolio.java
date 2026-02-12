@@ -2,34 +2,27 @@ package com.wellsfargo.counselor.entity;
 
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
-
 @Entity
 public class Portfolio {
     @Id
     @GeneratedValue()
-    private Long portfolioId;
+    private long portfolioId;
 
     @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
     @Column(nullable = false)
-    private Timestamp creationDate;
+    private String creationDate;
 
     protected Portfolio() {}
 
-    public Portfolio(Client client, Timestamp creationDate) {
+    public Portfolio(Client client, String creationDate) {
         this.client = client;
         this.creationDate = creationDate;
     }
 
-    public Timestamp getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Timestamp creationDate) {
-        this.creationDate = creationDate;
+    public long getPortfolioId() {
+        return portfolioId;
     }
 
     public Client getClient() {
@@ -38,5 +31,13 @@ public class Portfolio {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 }
